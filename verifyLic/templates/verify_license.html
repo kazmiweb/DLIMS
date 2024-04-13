@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify License</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="verify-div">
+      <form action="{% url 'verify_license' %}" method="post" class="shadow p-5">
+        <div class="cnic-lic-div">
+          {% for fm in form %}
+          <div class="form-control fields">
+            {{fm.label_tag}} {{fm}}
+          </div>
+          {% endfor %}
+        </div>
+        {% csrf_token %}
+        <!-- {% for fm in form %}
+        <div class="form-group">
+          {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+        </div>
+        {% endfor %} -->
+
+        <!-- {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+        <p class='alert alert-danger my-3'>{{error}}</p>
+        {% endfor %}
+        {% endif %} -->
+        <input type="submit" value="Verify"><br>
+      </form>
+    </div>
+
+
+
+
+    <!-- <div>
+    <a href="{% url 'save_license' %}">Save Another Record</a>
+  </div> -->
+
+
+
+    {% if license %}
+    <div>
+      {% for lic in license %}
+      <div class="image">
+        <img src="{{ lic.license_holder_image.url }}" style="display: block; margin: 0 auto;" height="200px">
+      </div>
+      <h6>User Information</h6>
+      <hr style="line-height: 0;">
+
+      <div class="all_ps">
+        <p><span>CNIC</span>: {{ lic.CNIC }}</p>
+        <p><span>Name</span>: {{ lic.Name|upper }}</p>
+        <p><span>Father/Husband Name</span>: {{ lic.Father_Husband_Name|upper }}</p>
+        <p><span>City</span>: {{ lic.City|upper }}</p>
+      </div>
+      <!-- Add other fields here -->
+      <h6>License Information</h6>
+      <hr>
+      <div class="all_ps">
+        <p><span>License Number</span>: {{ lic.License_Number }}</p>
+        <p><span>Issue Date</span>: {{ lic.Issue_Date }}</p>
+        <p><span>Valid From</span>: {{ lic.Valid_From }}</p>
+        <p><span>Valid To</span>: {{ lic.Valid_To }}</p>
+        <p><span>Allowed Vehicles</span>: {{ lic.Allowed_Vehicles }}</p>
+        <p><span>Status</span>: {{ lic.Status }}</p>
+      </div>
+      {% endfor %}
+
+
+    </div>
+    {% endif %}
+</body>
+
+</html>
