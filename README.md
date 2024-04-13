@@ -13,8 +13,19 @@ Before you begin, ensure you have met the following requirements:
 python -m pip install Django
 ```
 
+## Virtual Environment
+```bash
+python -m pip install virtualenv
+```
+
 ## Project Setup
 ```bash
+git clone <repository-url>
+cd project-folder
+virtualenv .venv
+# Activate virtual environment
+source .venv/bin/activate
+
 pip install -r requirements
 ```
 
