@@ -14,8 +14,14 @@ python -m pip install Django
 ```
 
 ## Virtual Environment
+Windows:
 ```bash
 python -m pip install virtualenv
+```
+
+Ubuntu:
+```bash
+apt install python3-virtualenv
 ```
 
 ## Project Setup
@@ -23,22 +29,35 @@ python -m pip install virtualenv
 git clone <repository-url>
 cd project-folder
 virtualenv .venv
+
 # Activate virtual environment
+
+# Windows
+./.venv/Scripts/activate # Command Prompt
+./.venv/Scripts/activate.ps1 # PowerShell
+source ./.venv/Scripts/activate.ps1 # GitBash
+
+# Ubuntu
 source .venv/bin/activate
 
-pip install -r requirements
+# Install the requirements.txt
+pip install -r requirements.txt
+or
+pip3 install -r requirements.txt
 ```
 
 ## Run Project
+Windows:
 ```bash
 python manage.py runserver
+```
+
+Ubuntu:
+```bash
+python3 manage.py runserver
 ```
 
 **Admin**
 - URL: localhost:8000/admin
 - Username: root
 - Password: root
-
-**URLS**
-- http://localhost:8000/license/verify
-- http://localhost:8000/license/verify/save
