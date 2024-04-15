@@ -12,7 +12,7 @@ class License(models.Model):
     Name = models.CharField(max_length=100)
     Father_Husband_Name = models.CharField(max_length=255)
     City = models.CharField(max_length=100)
-    License_Number = models.CharField(max_length=6)
+    License_Number = models.CharField(max_length=15)
     Issue_Date = models.DateField()
     Valid_From = models.DateField()
     Valid_To = models.DateField()

@@ -2,15 +2,9 @@
 from django import forms
 from .models import License
 
-
-
-
-
 class VerifyForm(forms.Form):
-    CNIC = forms.CharField(max_length=15)
-    License_Number = forms.CharField(max_length=5)
-
-
+    CNIC = forms.CharField(max_length=13)
+    License_Number = forms.CharField(max_length=15)
 
 class LicenseFormModel(forms.ModelForm):
     class Meta:
@@ -22,7 +16,7 @@ class LicenseFormModel(forms.ModelForm):
         'field_name_2': forms.Select(attrs={'class': 'custom-select', 'placeholder':'Please Enter License Number'}),
     }
 
-    # CNIC = forms.CharField(max_length=15)
+    # CNIC = forms.CharField(max_length=13)
     # License_Number = forms.CharField(max_length=20)
     # Father_Husband_Name = forms.CharField(max_length=255)
     # City = forms.CharField(max_length=100)
