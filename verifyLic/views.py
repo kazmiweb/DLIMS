@@ -34,14 +34,14 @@ def verify_license(request):
             cnic = form.cleaned_data['CNIC']
             license_number = form.cleaned_data['License_Number']
             # license = get_object_or_404(License, CNIC=cnic, License_Number=license_number)
-            license = License.objects.filter(CNIC=cnic)
+            # license = License.objects.filter(CNIC=cnic)
+            license = License.objects.filter(CNIC=cnic, License_Number=license_number)
             anchor = './anchor.html'
             saved_resource = './saved_resource.html'
-            return render(request, 'DLIMS.html', {'license': license, 'form': form, 'anchor':anchor, 'saved_resource':saved_resource})
+            return render(request, 'DLIMS.html', {'license': license, 'form': form, 'anchor': anchor, 'saved_resource': saved_resource})
     else:
         form = VerifyForm()
     return render(request, 'DLIMS.html', {'form': form})
-
 
 # def verification_done(request):
 #     id = License.objects.get(pk=id)
